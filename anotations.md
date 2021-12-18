@@ -53,6 +53,24 @@ Propiedades: Atraves dos componentes "pais" pode se passar atributos aos seus co
 
 Estado: O react monitora apenas as variaveis que vão mudar seu valor em algum momento, por isso precisamos passar algumas configurações pra que ele possa entender algumas funcionalidades
 
+{ useState } → é uma função armazena coisas dentro de um array com 2 posições. A primeira contém o valor da variável, e a segunda é que adiciona um novo valor a essa variável. Exemplo:
+
+const [counter, setCounter ] = useState(0);
+        |           |
+        |           → Recebe uma função que faz agregar um novo valor a 'counter'.
+        ↓
+        Contém o valor (Começando em 0)
+
+setCounter(counter++)
+
+{ useEffect } É parecido com o useState, mas ele faz com execute uma função, quando algo mudar. Exemplo:
+
+useEffect(() => {}, [counter] )            
+            |
+            |
+            → Essa função será executada, quando a variável counter mudar.
+
+
 
 
  -- Imutabilidade
@@ -69,4 +87,14 @@ newUsers = [...user, 'Thomas']                  | > Modo imutável: Pega tudo o 
 
 module path faz com que a gente possa trabalhar com caminhos e diretórios.
 
+
+fetch()  → A função fetch é usada para fazer requisicões através do navegador, usando como argumento uma url. Normalmente para se utilizar uma API.
+            Só que somente a função fetch('example.com/url') não te retornará algum valor, pois como o navegador demora um pouco para pegar esses dados,
+            ele retorna somente uma promessa, ou 'Promises'. Então logo a funçã fetch() é utilizado um 1º .then() que é uma função que vai "armazenar"
+            esses dados que vem como Objeto(Em forma de String) e passará ele para uma estrutura de objeto mesmo, através da função json(). E o segundo .then 
+            armazena esse objeto em outra variavel. Assim como no Exemplo abaixo: 
+
+            fetch('https://api.github/orgs/rocketseat/repos)          → Pega os dados do Repositorios da url da Rocketseat
+            .then( respone => response.json())                        → Armazena a string no "response" e depois transforma em objeto através do .json()
+            .then( data => setRepositories(data))                     → Armazena um novo valor em uma variavel, com o conteúdo que tem em "data", que no caso seria a String                                                      transformada em Texto
 
